@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("https://assets.epuzzle.info/puzzle/116/867/original.webp");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 10;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #aaaaaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #0078d4;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005a9e;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0078d4;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Üdvözlünk <%= username %>!</h1>
+        <p>Köszönjük, hogy bejelentkeztél!</p>
+        <a href="http://localhost:3500/calculate">Kalória számláló</a>
+
+        <!-- Tabs -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen">Tab 1</button>
+            <button class="tablinks" onclick="openTab(event, 'tab2')">Tab 2</button>
+            <button class="tablinks" onclick="openTab(event, 'tab3')">Tab 3</button>
+            <button class="tablinks" onclick="openTab(event, 'tab4')">Tab 4</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="tab1" class="tabcontent">
+            <!-- Content for Tab 1 -->
+            <form action="/profile" method="post">
+                <!-- Content of Tab 1 goes here -->
+            </form>
+        </div>
+
+        <div id="tab2" class="tabcontent">
+            <!-- Content for Tab 2 -->
+        </div>
+
+        <div id="tab3" class="tabcontent">
+            <!-- Content for Tab 3 -->
+        </div>
+
+        <div id="tab4" class="tabcontent">
+            <!-- Content for Tab 4 -->
+        </div>
+
+        <a href="http://localhost:3500/logout">Kijelentkezés</a>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <div class="container">
+        <form action="/profile" method="post">
+
+            <label for="profilePicture">Profilkép URL:</label>
+            <a href="http://localhost:3500/upload">Feltöltés</a>
+
+            <img src="<%= profileImage %>" alt="Profilkép" style="max-width: 100px; max-height: 100px;">
+            <h1>BMI Kalkulátor</h1>
+        <form id="bmiForm">
+
+            <label for="weight">Testsúly (kg):</label>
+            <input type="number" id="weight" name="weight" required><br>
+    
+            <label for="height">Magasság (cm):</label>
+            <input type="number" id="height" name="height" required><br>
+    
+            <button type="button" onclick="calculateBMI()">Számol</button>
+    
+            <h2>Eredmény:</h2>
+            <p id="result"></p>
+        </form>
+
+            <label for="birthDate">Születési dátum:</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+
+            <label for="height">Magasság (cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <label for="weight">Súly (kg)::</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="age">Életkor:</label>
+            <input type="number" id="age" name="age" required>
+
+            <input type="submit" value="Mentés">
+        </form>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value) / 100; // cm-ből m-re átváltás
+            var bmi = weight / (height * height);
+    
+            document.getElementById('result').innerHTML = `Az eredményed: ${bmi.toFixed(2)}`;
+        }
+    </script>
+</body>
+
+</html>

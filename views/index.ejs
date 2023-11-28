@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url('https://previews.123rf.com/images/romastudio/romastudio1607/romastudio160700145/60755685-healthy-berries-background-old-paper-with-fresh-strawberry-and-mint-leaf-on-wooden-table-copy-space.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        .slide-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 0px #888888;
+            max-width: 1800px;
+            padding: 20px;
+        }
+
+        h1 {
+            background-color: #044b19;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0b491e;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0b491e;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .centered-links {
+            text-align: center;
+        }
+
+        .bubble-link {
+            background-color: #87e2a2;
+            color: rgb(17, 17, 17);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 5px 10px;
+            display: inline-block;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            margin: 400px auto;
+            text-align: center;
+            position: fixed;
+            bottom: -350px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+
+        .mySlides {
+            display: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .slide-img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="slide-container">
+        <h1>FitBit</h1>
+        <div class="centered-links">
+            <a href="http://localhost:3500/about" class="bubble-link">Rólunk</a>
+            <a href="http://localhost:3500/register" class="bubble-link">Regisztráció</a>
+            <a href="http://localhost:3500/login" class="bubble-link">Bejelentkezés</a>
+        </div>
+        <p>Az egészség a legfontosabb dolog az életben. Vigyázz magadra, és kövesd ezeket az egészségügyi tippeket:</p>
+        <ul>
+            <li>Rendszeresen mozogj.</li>
+            <li>Egyél egészségesen és kiegyensúlyozottan.</li>
+            <li>Aludj legalább 7-8 órát minden éjszaka.</li>
+            <li>Kerüld a stresszt és relaxálj rendszeresen.</li>
+        </ul>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img class="slide-img" src="https://th.bing.com/th/id/OIP.3v0zA_ULGfj5LHLGzXfwdQHaE8?pid=ImgDet&rs=1&adlt=strict" alt="Slide 1">
+        </div>
+
+        <div class="mySlides">
+            <img class="slide-img" src="https://domina.parameter.sk/sites/default/files/photos/taplalekpiramis.jpg" alt="Slide 2">
+        </div>
+
+        <div class="mySlides">
+            <img class="slide-img" src="https://asset.kompas.com/crops/To8LLlJU-TQuUC90KEimWl4I2zc=/20x0:992x648/490x326/data/photo/2018/01/14/2342554562.jpg" alt="Slide 3">
+        </div>
+    </div>
+
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000);
+        }
+
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById("weight").value);
+            const height = parseFloat(document.getElementById("height").value) / 100;
+            const bmi = weight / (height * height);
+            document.getElementById("bmi-result").textContent = bmi.toFixed(2);
+        }
+    </script>
+</body>
+</html>

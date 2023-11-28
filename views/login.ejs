@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bejelentkezés</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://peakshop.hu/man/wp-content/uploads/2017/09/tricepsz_edzes_karedzes.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 10;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bejelentkezés</h1>
+    <a href="http://localhost:3500/">Főoldal</a>
+    <form action="/login" method="post">
+      <label for="username">Felhasználónév</label>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Jelszó</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <button type="submit">Bejelentkezés</button>
+    </form>
+    <a href="http://localhost:3500/register">Még nincs fiókod? Regisztrálj!</a>
+  </div>
+</body>
+</html>
